@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Post, Group
-from .forms import *
+from .forms import PostForm
 
 
 POSTS_PER_PAGE: int = 10
