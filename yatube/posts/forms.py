@@ -10,8 +10,14 @@ class PostForm(forms.ModelForm):
             queryset=Group.objects.all(),
             to_field_name="group")
         fields = ("text", "group")
+        help_texts = {'text': "Текст поста",
+                      'group': 'Группа, к которой будет относиться пост'}
+        labels = {'text': "Текст поста",
+                  'group': 'Группа'}
         widgets = {
             'text': forms.Textarea(attrs={'class': 'form-control',
                                           'cols': '40',
-                                          'rows': '10'}),
+                                          'rows': '10',
+                                          }
+                                   )
         }
