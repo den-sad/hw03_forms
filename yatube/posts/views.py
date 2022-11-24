@@ -19,7 +19,7 @@ def index(request):
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    posts = group.posts.all()
+    posts = group.posts.select_related('author').all()
 
     context = {
         'group': group,
@@ -31,7 +31,7 @@ def group_posts(request, slug):
 def profile(request, username):
     author = get_object_or_404(User, username=username)
     title = 'Профайл пользователя ' + author.get_full_name()
-    posts = author.posts.all()
+    posts = author.posts.select_related('group').all()
     post_count = posts.count()
 
     context = {
